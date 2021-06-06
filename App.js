@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text style={styles.textoMenu}>madeby</Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -14,8 +14,14 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#6C72D9',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
+  },
+  textoMenu: {
+    fontSize: 24,
+    fontWeight: "700",
+    color: '#fff',
+    borderRadius: 5
   },
 });
