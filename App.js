@@ -1,27 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
+import Navigator from './navigation/Navigator';
+import { ThemeProvider } from './theme/theme-context';
+
 
 export default function App() {
+    const [fontLoaded, error] = useFonts({
+      'poppins-regular': require('./assets/fonts/Poppins-Regular.ttf'),
+      'poppins-medium': require('./assets/fonts/Poppins-Medium.ttf'),
+      'poppins-light': require('./assets/fonts/Poppins-Light.ttf'),
+      'poppins-bold': require('./assets/fonts/Poppins-Bold.ttf'),
+    });
+    if (!fontLoaded) <AppLoading />
   return (
-    <View style={styles.container}>
-      <Text style={styles.textoMenu}>madeby</Text>
-      <StatusBar style="auto" />
-    </View>
+      <ThemeProvider>
+        <Navigator />
+      </ThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#6C72D9',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  textoMenu: {
-    fontSize: 24,
-    fontWeight: "700",
-    color: '#fff',
-    borderRadius: 5
-  },
-});
