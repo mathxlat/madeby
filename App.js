@@ -12,7 +12,7 @@ export default function App() {
       'poppins-light': require('./assets/fonts/Poppins-Light.ttf'),
       'poppins-bold': require('./assets/fonts/Poppins-Bold.ttf'),
     });
-    if (!fontLoaded) <AppLoading />
+    if (!fontLoaded) return <AppLoading />;
   return (
       <ThemeProvider>
         <Navigator />

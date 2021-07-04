@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     image: {
         width: 150,
         height: 150,
-        borderRadius: 25
+        borderRadius: 30
     }, 
     containerCardItem: {
         flexDirection: 'row-reverse',
