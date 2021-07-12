@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width - 50,
         padding: 15,
         justifyContent: 'space-around',
-        margin: 15,
+        marginTop: 15,
+        marginHorizontal: 15,
         minHeight: 100,
         maxHeight: '100%',
         borderRadius: 30,
@@ -35,7 +36,6 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.30,
         shadowRadius: 4.65,
-        
         elevation: 8,
     },
     cardText:{

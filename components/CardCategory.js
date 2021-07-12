@@ -2,22 +2,15 @@ import React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
 import Card from './Card'
 
-const CardCategory = ({categories, navigation}) => {
-    const { item } = categories;
-    const image = item.categoryImage;
+const CardCategory = ({ item, onSelected }) => {
     return (
-        <Card onPress={() => {
-            navigation.navigate('Category', {
-                category: item.categoryName,
-                items: item.items
-            });
-        }}>
+        <Card onPress={() => onSelected(item)}>
             <View style={styles.containerCardCategories}>
                 <View style={styles.containerCardText}>
-                    <Text style={styles.textName}>{item.categoryName}</Text>
-                    <Text style={styles.textInfo}>{item.categoryInfo}</Text>
+                    <Text style={styles.textName}>{item.name}</Text>
+                    <Text style={styles.textInfo}>{item.description}</Text>
                 </View>
-                <Image style={styles.image} source={{uri: image}} />
+                <Image style={styles.image} source={{uri: item.image}} />
             </View>
         </Card>
     )

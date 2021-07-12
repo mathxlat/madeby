@@ -1,21 +1,32 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { StyleSheet, View, FlatList, Dimensions} from 'react-native'
 import CardCategory from '../components/CardCategory'
-import data from '../services/database';
+import {CATEGORIES} from '../services/categories';
+import CarouselCards from '../carousel/CarouselCards';
 
 const HomeScreen = ({ navigation }) => {
-    const [categories, setCategories] = useState(data);
-    useEffect(() =>{
-        setCategories(data);
-    }, [data])
+    console.log(CATEGORIES)
+    const handleSelected = item => {
+        navigation.navigate('Category', {
+            categoryID: item.id,
+            name: item.name,
+            description: item.description,
+            image: item.image
+        })
+    }
+    const renderItem = ({ item }) => <CardCategory item={item} onSelected={handleSelected} />
+
     return (
-        <View style={styles.containerCategories}>
-            <FlatList 
-                data={categories}
-                renderItem={categories => <CardCategory categories={categories} navigation={navigation} />}
-                keyExtractor={(category => category.categoryID)}
-            />
-        </View>
+        <>
+            <CarouselCards />
+            <View style={styles.containerCategories}>
+                <FlatList 
+                    data={CATEGORIES}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                />
+            </View>
+        </>
     )
 }
 
