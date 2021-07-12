@@ -2,7 +2,7 @@ export const CATEGORIES = [
     {    
         id: '1',
         name: 'Motherboards',
-        image: 'https://images.unsplash.com/photo-1600336757481-6185c4be6ff6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=966&q=80',
+        image: 'https://images.unsplash.com/photo-1613483187636-c2024013d54a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
         description: 'Las más baratas del mercado',
         color: '#04A777',
         destacado: true

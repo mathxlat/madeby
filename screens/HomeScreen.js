@@ -1,11 +1,10 @@
 import React from 'react'
 import { StyleSheet, View, FlatList, Dimensions} from 'react-native'
-import CardCategory from '../components/CardCategory'
-import {CATEGORIES} from '../services/categories';
+import CardItem from '../components/CardItem'
+import { CATEGORIES } from '../services/categories';
 import CarouselCards from '../carousel/CarouselCards';
 
 const HomeScreen = ({ navigation }) => {
-    console.log(CATEGORIES)
     const handleSelected = item => {
         navigation.navigate('Category', {
             categoryID: item.id,
@@ -14,7 +13,7 @@ const HomeScreen = ({ navigation }) => {
             image: item.image
         })
     }
-    const renderItem = ({ item }) => <CardCategory item={item} onSelected={handleSelected} />
+    const renderItem = ({ item }) => <CardItem item={item} onSelected={handleSelected} />
 
     return (
         <>

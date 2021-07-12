@@ -35,6 +35,9 @@ const styles = StyleSheet.create({
         fontSize: 24,
         paddingLeft: 20,
         paddingTop: 20,
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: {width: 1, height: 1},
+        textShadowRadius: 1
     },
     body: {
         color: "#eee",
@@ -42,6 +45,9 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         paddingLeft: 20,
         paddingRight: 20,
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: {width: 1, height: 1},
+        textShadowRadius: 1
     },
 });
 
