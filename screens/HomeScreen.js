@@ -1,17 +1,18 @@
 import React from 'react'
 import { StyleSheet, View, FlatList, Dimensions} from 'react-native'
+import { useSelector, useDispatch } from 'react-redux'
 import CardItem from '../components/CardItem'
-import { CATEGORIES } from '../services/categories';
 import CarouselCards from '../carousel/CarouselCards';
+import { selectCategory } from '../store/actions/category.action';
+
 
 const HomeScreen = ({ navigation }) => {
+    const dispatch = useDispatch();
+    const productCategories = useSelector(state => state.categories.categories)
+
     const handleSelected = item => {
-        navigation.navigate('Category', {
-            categoryID: item.id,
-            name: item.name,
-            description: item.description,
-            image: item.image
-        })
+        dispatch(selectCategory(item.id))
+        navigation.navigate('Category', {name: item.name})
     }
     const renderItem = ({ item }) => <CardItem item={item} onSelected={handleSelected} />
 
@@ -20,7 +21,7 @@ const HomeScreen = ({ navigation }) => {
             <CarouselCards />
             <View style={styles.containerCategories}>
                 <FlatList 
-                    data={CATEGORIES}
+                    data={productCategories}
                     renderItem={renderItem}
                     keyExtractor={item => item.id}
                 />

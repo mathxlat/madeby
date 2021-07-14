@@ -3,7 +3,8 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import Navigator from './navigation/Navigator';
 import { ThemeProvider } from './theme/theme-context';
-
+import { Provider } from 'react-redux';
+import store from './store';
 
 export default function App() {
     const [fontLoaded, error] = useFonts({
@@ -14,8 +15,10 @@ export default function App() {
     });
     if (!fontLoaded) return <AppLoading />;
   return (
+    <Provider store={store}>
       <ThemeProvider>
         <Navigator />
       </ThemeProvider>
+    </Provider>
   );
 }
