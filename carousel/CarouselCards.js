@@ -7,14 +7,14 @@ import CarouselCardItem, { SLIDER_WIDTH, ITEM_WIDTH } from "./CarouselCardItem";
 const CarouselCards = () => {
     const isCarousel = React.useRef(null);
     const productCategories = useSelector(state => state.categories.categories)
-
+    const filtradoDestacado = productCategories.filter(category => category.destacado === true)
 
     return (
     <View>
         <Carousel
         layout="default"
         ref={isCarousel}
-        data={productCategories}
+        data={filtradoDestacado}
         renderItem={CarouselCardItem}
         sliderWidth={SLIDER_WIDTH}
         itemWidth={ITEM_WIDTH}
