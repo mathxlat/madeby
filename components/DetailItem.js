@@ -1,7 +1,8 @@
 import React from 'react'
-import { StyleSheet, Text, View, Dimensions, Image } from 'react-native'
+import { StyleSheet, Text, View, Dimensions, Image, Button, TouchableOpacity } from 'react-native'
 
-const DetailItem = ({ item }) => {
+const DetailItem = ({ item, onAdd, navigation }) => {
+    const handleShowCart = () => navigation.push('Cart');
     return (
         <View style={styles.itemContainer}>
             <View style={styles.itemContainerAll}>
@@ -16,9 +17,15 @@ const DetailItem = ({ item }) => {
                     <Text style={styles.itemDetailText}>{item.description}</Text>
                 </View>
                 <View style={styles.itemContainerPrice}>
-                    <Text style={styles.itemPriceTotalText}>Precio Total</Text>
-                    <Text style={styles.itemPriceText}>${item.price}</Text>
+                    <View style={styles.itemPriceBuy}>
+                        <Text style={styles.itemPriceTotalText}>Precio Total</Text>
+                        <Text style={styles.itemPriceText}>${item.price}</Text>
+                    </View>
+                    <TouchableOpacity style={styles.btnAddCart} onPress={onAdd} >
+                        <Text style={styles.btnTextAddCart}>Agregar</Text>
+                    </TouchableOpacity>
                 </View>
+                <Button title="Ver Carrito" onPress={handleShowCart} />
             </View>
         </View>
     )
@@ -53,7 +60,11 @@ const styles = StyleSheet.create({
         marginVertical: 15
     },
     itemContainerPrice:{
-        marginVertical: 15
+        marginVertical: 15,
+        flexDirection: 'row',
+        width: Dimensions.get('window').width - 50,
+        justifyContent: 'space-between',
+        alignItems: 'center',
     },
     itemNameText:{
         fontFamily: 'poppins-medium',
@@ -77,8 +88,18 @@ const styles = StyleSheet.create({
         fontFamily: 'poppins-medium',
         fontSize: 20,
         color: '#333'
+    },
+    btnAddCart:{
+        paddingVertical: 11,
+        paddingHorizontal: 30,
+        borderRadius: 30,
+        backgroundColor: '#8855FF'
+    },
+    btnTextAddCart: {
+        fontSize: 19,
+        fontFamily: 'poppins-medium',
+        color: '#ffffff'
     }
-
 })
 
 export default DetailItem;

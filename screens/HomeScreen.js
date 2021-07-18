@@ -9,7 +9,6 @@ import { selectCategory } from '../store/actions/category.action';
 const HomeScreen = ({ navigation }) => {
     const dispatch = useDispatch();
     const productCategories = useSelector(state => state.categories.categories)
-
     const handleSelected = item => {
         dispatch(selectCategory(item.id))
         navigation.navigate('Category', {name: item.name})

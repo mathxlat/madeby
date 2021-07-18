@@ -5,6 +5,7 @@ import { CardStyleInterpolators, createStackNavigator, TransitionSpecs} from '@r
 import HomeScreen from '../screens/HomeScreen';
 import CategoryScreen from '../screens/CategoryScreen';
 import DetailScreen from '../screens/DetailScreen';
+import CartScreen from '../screens/CartScreen';
 
 import { ThemeContext } from '../theme/theme-context';
 
@@ -64,6 +65,14 @@ const Navigator = () => {
                     options={({ route })=>({ 
                     title: route.params.name,
                     })}
+                />
+
+                <Stack.Screen 
+                    name="Cart" 
+                    component={CartScreen} 
+                    options={{
+                        title: 'Carrito'
+                    }}
                 />
                 
             </Stack.Navigator>
