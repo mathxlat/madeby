@@ -23,6 +23,9 @@ const HomeScreen = ({ navigation }) => {
                     data={productCategories}
                     renderItem={renderItem}
                     keyExtractor={item => item.id}
+                    contentContainerStyle={{
+                        paddingVertical: 10
+                    }}
                 />
             </View>
         </>

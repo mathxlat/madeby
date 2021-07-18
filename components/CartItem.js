@@ -1,25 +1,33 @@
 import React from 'react'
-import { StyleSheet, Text, View, Button, Dimensions } from 'react-native'
+import { StyleSheet, Text, View, Button, Dimensions, Image, TouchableOpacity } from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
 
 const CartItem = ({item, onDelete}) => {
     return (
         <View style={styles.containerCartItem}>
             <View>
-                <Text>
-                    {item.name}
-                </Text>
+                <Image style={styles.image} source={{ uri: item.image }}/>
             </View>
             <View>
-                <Text>
-                    Cantidad: {item.quantity}
-                </Text>
+                <View>
+                    <Text style={styles.textName}>
+                        {item.name}
+                    </Text>
+                </View>
+                <View>
+                    <Text>
+                        Cantidad: {item.quantity}
+                    </Text>
+                </View>
+                <View>
+                    <Text>
+                        ${item.price}
+                    </Text>
+                </View>
             </View>
-            <View>
-                <Text>
-                    ${item.price}
-                </Text>
-            </View>
-            <Button title="X" onPress={()=> onDelete(item.id)} />
+            <TouchableOpacity onPress={()=> onDelete(item.id)}>
+                <Ionicons name="close" size={32} color="red" />
+            </TouchableOpacity>
         </View>
     )
 }
@@ -36,6 +44,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'white',
         borderRadius: 5
+    },
+    image:{
+        width: 115,
+        height: 115,
+        borderRadius: 5,
+        marginVertical: 15
+    },
+    textName:{
+        fontFamily: 'poppins-medium',
+        fontSize: 16
     }
 })
 
