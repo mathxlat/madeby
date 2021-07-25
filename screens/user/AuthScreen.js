@@ -1,5 +1,5 @@
 import React, { useReducer, useCallback, useState, useEffect } from 'react'
-import { StyleSheet, Text, Button, View, KeyboardAvoidingView, Alert } from 'react-native'
+import { StyleSheet, Text, Button, TouchableWithoutFeedback, View, KeyboardAvoidingView, Keyboard, Alert } from 'react-native'
 import Input from '../../components/Input'
 import { useDispatch } from 'react-redux';
 import { signup, login } from '../../store/actions/auth.actions';
@@ -81,13 +81,16 @@ const AuthScreen = () => {
 
 
     return (
+      <TouchableWithoutFeedback 
+        onPress={()=> Keyboard.dismiss()}
+      >
         <KeyboardAvoidingView
             behavior="padding"
             keyboardVerticalOffset={50}
             style={styles.screen} 
-        >
+            >
             <View style={styles.container}>
-                <Text style={styles.title}>YaPanaderia</Text>
+                <Text style={styles.title}>madeby</Text>
                 <View>
                   <Input
                     id="email"
@@ -99,7 +102,7 @@ const AuthScreen = () => {
                     errorText="Por favor ingrese un email valido"
                     onInputChange={onInputChangeHandler}
                     initialValue=""
-                  />
+                    />
                   <Input 
                     id="password"
                     label="Clave"
@@ -111,7 +114,7 @@ const AuthScreen = () => {
                     errorText="Por favor ingrese una clave de mas de 6 caracteres"
                     onInputChange={onInputChangeHandler}
                     initialValue=""
-                  />
+                    />
                 </View>
                 <View style={styles.footer}>
                   <View style={styles.button}>
@@ -123,19 +126,21 @@ const AuthScreen = () => {
                 </View>
             </View>
         </KeyboardAvoidingView>
+      </TouchableWithoutFeedback>
     )
 }
 
 
 const styles = StyleSheet.create({
     screen: {
-        flex: 1,
-        justifyContent: 'center',
+      flex: 1,
+      justifyContent: 'center',
         alignItems: 'center',
       },
       title: {
         fontSize: 24,
         marginBottom: 18,
+        fontFamily: 'poppins-medium'
       },
       container: {
         width: '80%',

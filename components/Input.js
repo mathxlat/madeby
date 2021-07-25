@@ -1,18 +1,18 @@
 import React, { useEffect, useReducer } from 'react'
 import { StyleSheet, Text, View, TextInput} from 'react-native'
 
+const INPUT_CHANGE_TEXT = 'INPUT_CHANGE_TEXT';
 const INPUT_CHANGE = 'INPUT_CHANGE';
-const INPUT_BLUR = 'INPUT_BLUR';
 
 const inputReducer = (state, action) => {
     switch (action.type) {
-        case INPUT_CHANGE:
+        case INPUT_CHANGE_TEXT:
             return {
                 ...state,
                 value: action.value,
                 isValid: action.isValid,
             }
-        case INPUT_BLUR:
+        case INPUT_CHANGE:
             return {
                 ...state,
                 touched: true,
@@ -51,14 +51,14 @@ const Input = props => {
             isValid = false;
         
         dispatch({
-            type: INPUT_CHANGE,
+            type: INPUT_CHANGE_TEXT,
             value: text,
             isValid,
         });
         
     }
 
-    const onBlurHandler = () => dispatch({ type: INPUT_BLUR });
+    const onChangeHandler = () => dispatch({ type: INPUT_CHANGE });
 
 
 
@@ -69,7 +69,7 @@ const Input = props => {
                 {...props}
                 style={styles.input}
                 onChangeText={textChangeHandler}
-                onBlur={onBlurHandler}
+                onChange={onChangeHandler}
             />
             {!inputState.isValid && inputState.touched && (
                 <View style={styles.errorContainer}>
