@@ -1,8 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, Dimensions, Image, Button, TouchableOpacity } from 'react-native'
 
-const DetailItem = ({ item, onAdd, navigation }) => {
-    const handleShowCart = () => navigation.push('Cart');
+const DetailItem = ({ item, onAdd}) => {
     return (
         <View style={styles.itemContainer}>
             <View style={styles.itemContainerAll}>
@@ -25,7 +24,6 @@ const DetailItem = ({ item, onAdd, navigation }) => {
                         <Text style={styles.btnTextAddCart}>Agregar</Text>
                     </TouchableOpacity>
                 </View>
-                <Button title="Ver Carrito" onPress={handleShowCart} />
             </View>
         </View>
     )

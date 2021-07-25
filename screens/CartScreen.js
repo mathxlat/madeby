@@ -10,9 +10,10 @@ const CartScreen = () => {
 
     const items = useSelector(state => state.cart.items);
     const total = useSelector(state => state.cart.total);
+    const user = useSelector(state => state.auth.user);
 
     const handleDeleteItem = id => dispatch(deleteItem(id))
-    const handleConfirmCart = () => dispatch(confirmCart(items))
+    const handleConfirmCart = () => dispatch(confirmCart(items, user))
 
     const renderItem = data => <CartItem item={data.item} onDelete={handleDeleteItem} />
 
@@ -29,11 +30,11 @@ const CartScreen = () => {
                 </View>
             </View>
             <View style={styles.containerTotalConfirm}>
+                <Button title="Confirmar" onPress={handleConfirmCart} />
                 <View style={styles.total}>
                     <Text style={styles.textTotal}>Total</Text>
                     <Text>${total}</Text>
                 </View>
-                <Button title="Confirmar" onPress={handleConfirmCart} />
             </View>
         </View>
         </>

@@ -1,13 +1,12 @@
 import React, { useContext } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { CardStyleInterpolators, createStackNavigator, TransitionSpecs} from '@react-navigation/stack';
 
-import HomeScreen from '../screens/HomeScreen';
-import CategoryScreen from '../screens/CategoryScreen';
-import DetailScreen from '../screens/DetailScreen';
-import CartScreen from '../screens/CartScreen';
+import HomeScreen from '../../screens/HomeScreen';
+import CategoryScreen from '../../screens/CategoryScreen';
+import DetailScreen from '../../screens/DetailScreen';
+import CartScreen from '../../screens/CartScreen';
 
-import { ThemeContext } from '../theme/theme-context';
+import { ThemeContext } from '../../theme/theme-context';
 
 const Stack = createStackNavigator();
 
@@ -21,10 +20,9 @@ const customTrasition = {
     cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS,
 }
 
-const Navigator = () => {
+const ShopNavigator = () => {
     const { theme } = useContext(ThemeContext);
     return (
-        <NavigationContainer>
             <Stack.Navigator 
             initalRouteName="Home" 
             mode="modal"
@@ -76,8 +74,7 @@ const Navigator = () => {
                 />
                 
             </Stack.Navigator>
-        </NavigationContainer>
     )
 }
 
-export default Navigator;
+export default ShopNavigator;
