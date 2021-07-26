@@ -16,27 +16,27 @@ const HomeScreen = ({ navigation }) => {
     const renderItem = ({ item }) => <CardItem item={item} onSelected={handleSelected} />
 
     return (
-        <>
-            <CarouselCards />
             <View style={styles.containerCategories}>
                 <FlatList 
+                    ListHeaderComponent={ <CarouselCards onSelected={handleSelected} /> }
                     data={productCategories}
                     renderItem={renderItem}
                     keyExtractor={item => item.id}
                     contentContainerStyle={{
-                        paddingVertical: 10
+                        paddingVertical: 10,
+                        paddingBottom: 100
                     }}
                 />
             </View>
-        </>
     )
 }
 
 const styles = StyleSheet.create({
     containerCategories:{
         flex: 1,
+        width: Dimensions.get('window').width,
+        justifyContent: 'center',
         alignItems: 'center',
-        width: Dimensions.get('window').width
     }
 })
 

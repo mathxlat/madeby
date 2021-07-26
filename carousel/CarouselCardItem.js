@@ -1,15 +1,17 @@
 import React from "react";
-import { StyleSheet, Text, Dimensions, ImageBackground } from "react-native";
+import { StyleSheet, Text, Dimensions, ImageBackground, TouchableWithoutFeedback } from "react-native";
 
 export const SLIDER_WIDTH = Dimensions.get("window").width;
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.9);
 
-const CarouselCardItem = ({ item, index }) => {
+const CarouselCardItem = ({ item, index, onSelected }) => {
     return (
-    <ImageBackground source={{ uri: item.image }} style={styles.container} key={index}>
-        <Text style={styles.header}>{item.name}</Text>
-        <Text style={styles.body}>{item.description}</Text>
-    </ImageBackground>
+    <TouchableWithoutFeedback onPress={() => onSelected(item)}>
+        <ImageBackground source={{ uri: item.image }} style={styles.container} key={index}>
+            <Text style={styles.header}>{item.name}</Text>
+            <Text style={styles.body}>{item.description}</Text>
+        </ImageBackground>
+    </TouchableWithoutFeedback>
     );
 };
 

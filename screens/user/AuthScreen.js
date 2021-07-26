@@ -1,5 +1,5 @@
 import React, { useReducer, useCallback, useState, useEffect } from 'react'
-import { StyleSheet, Text, Button, TouchableWithoutFeedback, View, KeyboardAvoidingView, Keyboard, Alert } from 'react-native'
+import { StyleSheet, Text, Button, TouchableWithoutFeedback, View, KeyboardAvoidingView, Keyboard, Alert, TouchableOpacity } from 'react-native'
 import Input from '../../components/Input'
 import { useDispatch } from 'react-redux';
 import { signup, login } from '../../store/actions/auth.actions';
@@ -117,12 +117,12 @@ const AuthScreen = () => {
                     />
                 </View>
                 <View style={styles.footer}>
-                  <View style={styles.button}>
-                    <Button title="Acceder" onPress={onLoginHandler} />
-                  </View>
-                  <View style={styles.button}>
-                    <Button title="Registrarse" onPress={onSignupHandler} />
-                  </View>
+                  <TouchableOpacity style={styles.button} onPress={onLoginHandler}>
+                      <Text style={styles.textButton}>INICIAR SESIÓN</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.button} onPress={onSignupHandler}>
+                      <Text style={styles.textButton}>REGISTRARSE</Text>
+                  </TouchableOpacity>
                 </View>
             </View>
         </KeyboardAvoidingView>
@@ -152,8 +152,18 @@ const styles = StyleSheet.create({
       footer: {
         marginTop: 24,
       },
-      button: {
-        marginBottom: 8,
+      button:{
+        paddingVertical: 11,
+        paddingHorizontal: 30,
+        borderRadius: 30,
+        backgroundColor: '#8855FF',
+        marginBottom: 10,
+        alignItems: 'center',
+      },
+      textButton: {
+          fontSize: 18,
+          fontFamily: 'poppins-medium',
+          color: '#ffffff'
       },
 })
 

@@ -17,7 +17,7 @@ const customTrasition = {
         open: TransitionSpecs.TransitionIOSSpec,
         close: TransitionSpecs.TransitionIOSSpec
     },
-    cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS,
+    cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
 }
 
 const ShopNavigator = () => {

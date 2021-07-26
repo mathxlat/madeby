@@ -21,10 +21,11 @@ const Card = ({ children, style = {}, onPress }) => {
 
 const styles = StyleSheet.create({
     containerCard: {
-        width: Dimensions.get('window').width - 50,
+        width: Dimensions.get('window').width - 40,
         padding: 15,
         justifyContent: 'space-around',
-        margin: 10,
+        margin: 20,
+        marginVertical: 10,
         minHeight: 100,
         maxHeight: '100%',
         borderRadius: 30,

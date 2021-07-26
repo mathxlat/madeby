@@ -1,9 +1,10 @@
 import React from 'react'
-import { StyleSheet, Text, View, Button, FlatList, Dimensions } from 'react-native'
+import { StyleSheet, Text, View, Button, FlatList, Dimensions, TouchableOpacity } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteItem } from '../store/actions/cart.action'
 import CartItem from '../components/CartItem'
 import { confirmCart } from '../store/actions/cart.action'
+import Colors from '../constants/Colors'
 
 const CartScreen = () => {
     const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const CartScreen = () => {
     const renderItem = data => <CartItem item={data.item} onDelete={handleDeleteItem} />
 
     return (
-        <>
+        (items[0]) ? (
         <View style={styles.containerCart}>
             <View style={styles.containerList}>
                 <View style={styles.list}>
@@ -30,14 +31,23 @@ const CartScreen = () => {
                 </View>
             </View>
             <View style={styles.containerTotalConfirm}>
-                <Button title="Confirmar" onPress={handleConfirmCart} />
                 <View style={styles.total}>
                     <Text style={styles.textTotal}>Total</Text>
                     <Text>${total}</Text>
                 </View>
+                <TouchableOpacity style={styles.btnConfirmCart} onPress={handleConfirmCart}>
+                    <Text style={styles.btnTextConfirmCart}>
+                        Confirmar
+                    </Text>
+                </TouchableOpacity>
             </View>
-        </View>
-        </>
+        </View>) : (
+            <View style={styles.containerCartEmpty}>
+                <Text style={styles.textCartEmpty}>
+                    Tu carrito está vacio, agrega un producto y vuelve.
+                </Text>
+            </View>
+        )
     )
 }
 
@@ -51,11 +61,21 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
     },
-    containerTotalConfirm:{
-        marginBottom: 50,
+    containerTotalConfirm: {
+        marginBottom: 100,
         width: Dimensions.get('window').width - 50,
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    containerCartEmpty: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginHorizontal: 30,
+    },  
+    textCartEmpty: {
+        fontFamily: 'poppins-regular',
+        fontSize: 22
     },
     total: {
         alignSelf: 'flex-start',
@@ -67,6 +87,17 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontFamily: 'poppins-regular',
         marginBottom: -10,
+    },
+    btnConfirmCart:{
+        paddingVertical: 11,
+        paddingHorizontal: 30,
+        borderRadius: 30,
+        backgroundColor: '#8855FF'
+    },
+    btnTextConfirmCart: {
+        fontSize: 16,
+        fontFamily: 'poppins-medium',
+        color: '#ffffff'
     }
 })
 
