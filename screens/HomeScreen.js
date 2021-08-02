@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
 import { StyleSheet, View, FlatList, Dimensions} from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import HeaderButton from '../components/HeaderButton';
 import CardItem from '../components/CardItem'
 import CarouselCards from '../carousel/CarouselCards';
 import { selectCategory } from '../store/actions/category.action';
-
 
 const HomeScreen = ({ navigation }) => {
     const dispatch = useDispatch();
@@ -14,6 +15,20 @@ const HomeScreen = ({ navigation }) => {
         navigation.navigate('Category', {name: item.name})
     }
     const renderItem = ({ item }) => <CardItem item={item} onSelected={handleSelected} />
+
+    useLayoutEffect(()=>{
+        navigation.setOptions({
+            headerRight: () => (
+                <HeaderButtons HeaderButtonComponent={HeaderButton} >
+                    <Item 
+                        title="Guardados"
+                        iconName="bookmarks-outline"
+                        onPress={() => navigation.push('Saves')}
+                    />
+                </HeaderButtons>
+            )
+        })
+    }, [navigation])
 
     return (
             <View style={styles.containerCategories}>

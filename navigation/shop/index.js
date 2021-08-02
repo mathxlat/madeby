@@ -4,7 +4,7 @@ import { CardStyleInterpolators, createStackNavigator, TransitionSpecs} from '@r
 import HomeScreen from '../../screens/HomeScreen';
 import CategoryScreen from '../../screens/CategoryScreen';
 import DetailScreen from '../../screens/DetailScreen';
-import CartScreen from '../../screens/CartScreen';
+import SaveScreen from '../../screens/SaveScreen';
 
 import { ThemeContext } from '../../theme/theme-context';
 
@@ -66,10 +66,10 @@ const ShopNavigator = () => {
                 />
 
                 <Stack.Screen 
-                    name="Cart" 
-                    component={CartScreen} 
+                    name="Saves" 
+                    component={SaveScreen} 
                     options={{
-                        title: 'Carrito'
+                        title: 'Guardados'
                     }}
                 />
                 

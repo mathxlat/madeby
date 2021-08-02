@@ -1,8 +1,10 @@
 import React, { useReducer, useCallback, useState, useEffect } from 'react'
-import { StyleSheet, Text, Button, TouchableWithoutFeedback, View, KeyboardAvoidingView, Keyboard, Alert, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, TouchableWithoutFeedback, View, KeyboardAvoidingView, Keyboard, Alert, TouchableOpacity } from 'react-native'
 import Input from '../../components/Input'
 import { useDispatch } from 'react-redux';
-import { signup, login } from '../../store/actions/auth.actions';
+import { signup, login, data } from '../../store/actions/auth.actions';
+
+
 
 const FORM_INPUT_UPDATE = 'FORM_INPUT_UPDATE';
 
@@ -78,6 +80,18 @@ const AuthScreen = () => {
         setError(err.message);
       }
     }
+
+    const onData = async () => {
+      try{
+        await dispatch(data());
+      } catch (err) {
+        setError(err.message);
+      }
+    }
+
+    useEffect(() =>{
+      onData()
+    }, [])
 
 
     return (

@@ -1,16 +1,31 @@
 import React from 'react'
-import { StyleSheet, Text, View, Dimensions, Image, Button, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Dimensions, Image, TouchableOpacity } from 'react-native'
+import { Ionicons } from '@expo/vector-icons';
 
-const DetailItem = ({ item, onAdd}) => {
+const DetailItem = ({ item, onAdd, onSave, itemSave, onRemoveSave }) => {
     return (
         <View style={styles.itemContainer}>
             <View style={styles.itemContainerAll}>
                 <View style={styles.itemImageContainer}>
                     <Image style={styles.itemImage} source={{ uri: item.image }}/>
                 </View>
+
+                <View style={styles.itemContainerNPS}>
                 <View style={styles.itemContainerNameProducer}>
                     <Text style={styles.itemNameText}>{item.name}</Text>
                     <Text style={styles.itemProducerText}>{item.createdby}</Text>
+                </View>
+                {
+                    !itemSave 
+                    ?
+                    <TouchableOpacity style={styles.btnSave} onPress={onSave}>
+                        <Ionicons name="bookmark-outline" size={28} color="black" />
+                    </TouchableOpacity>
+                    :
+                    <TouchableOpacity style={styles.btnSave} onPress={onRemoveSave}>
+                        <Ionicons name="bookmark" size={28} color="black" />
+                    </TouchableOpacity>
+                }
                 </View>
                 <View style={styles.itemContainerDetail}>
                     <Text style={styles.itemDetailText}>{item.description}</Text>
@@ -53,6 +68,11 @@ const styles = StyleSheet.create({
     },
     itemContainerNameProducer:{
         marginVertical: 15
+    },
+    itemContainerNPS:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: Dimensions.get('window').width - 50,
     },
     itemContainerDetail: {
         marginVertical: 15
@@ -97,6 +117,10 @@ const styles = StyleSheet.create({
         fontSize: 19,
         fontFamily: 'poppins-medium',
         color: '#ffffff'
+    },
+    btnSave: {
+        padding: 19,
+        borderRadius: 50
     }
 })
 
