@@ -1,5 +1,5 @@
 import React, { useEffect} from 'react'
-import { StyleSheet, View, FlatList, Dimensions } from 'react-native'
+import { StyleSheet, View, FlatList, Text, Dimensions } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux';
 import CardItem from '../components/CardItem'
 import { loadSaves } from '../store/actions/saves.action'
@@ -22,6 +22,7 @@ const SaveScreen = ({ navigation }) => {
     const renderItem = ({ item }) => <CardItem item={item} onSelected={handleSelected} />
     return (
         <View style={styles.containerItems}>
+            {(saves[0]) ? (
             <FlatList 
                 data={saves}
                 renderItem={renderItem}
@@ -29,7 +30,13 @@ const SaveScreen = ({ navigation }) => {
                 contentContainerStyle={{
                     paddingVertical: 10
                 }}
-            />
+            /> ) : (
+            <View style={styles.containerEmpty}>
+                <Text style={styles.textEmpty}>
+                    ¡No tienes productos guardados!
+                </Text>
+            </View>
+            )}
         </View>
     )
 }
@@ -41,5 +48,17 @@ const styles = StyleSheet.create({
         flex: 1,
         width: Dimensions.get('window').width,
         alignItems: 'center'
-    }
+    },
+    containerEmpty: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginHorizontal: 30,
+        marginBottom: 20
+    },  
+    textEmpty: {
+        fontFamily: 'poppins-regular',
+        fontSize: 22,
+        textAlign: 'center'
+    },
 })

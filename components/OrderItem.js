@@ -16,8 +16,11 @@ const OrderItem = ({ item, onDelete }) => {
     return (
         <View style={styles.order}>
             <View style={styles.data}>
-                <Text>{formatDate(item.date)}</Text>
-                <Text>${sumTotal(item.items)}</Text>
+                <View style={styles.dateItems}>
+                    <Text>{formatDate(item.date)}</Text>
+                    <Text>${sumTotal(item.items)}</Text>
+                </View>
+                <Text>{item.address}</Text>
             </View>
             <View style={styles.actions}>
                 <TouchableOpacity onPress={() => onDelete(item.id)} style={styles.button}>
@@ -34,32 +37,41 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         width: '100%',
         justifyContent: 'space-between',
-        height: 60,
+        height: 80,
         paddingBottom: 10,
         borderBottomColor: '#ccc',
         borderBottomWidth: 1,
-      },
-      data: {
+    },
+    data: {
+        flexDirection: 'column',
+        width: '80%',
+        justifyContent: 'space-between',
+        alignContent: 'space-between',
+        height: 70,
+    },
+    dateItems: {
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         alignItems: 'center',
         height: 60,
-      },
-      actions: {
+        justifyContent: 'space-between',
+        width: '50%',
+    },
+    actions: {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'flex-end',
         alignItems: 'center',
         height: 60,
-      },
-      button: {
+    },
+    button: {
         width: 24,
         height: 24,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 3,
-      },
+    },
 })
 
 export default OrderItem;

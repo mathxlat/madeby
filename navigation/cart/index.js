@@ -3,6 +3,8 @@ import { Platform } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import CartScreen from '../../screens/CartScreen';
+import LocationScreen from '../../screens/LocationScreen';
+
 
 const CartStack = createStackNavigator()
 
@@ -25,10 +27,23 @@ const CartNavigator = () => {
             headerTitleAlign: 'center',
         }} 
         >
+
             <CartStack.Screen 
             name="Cart"
             component={CartScreen}
+            options={()=>({ 
+                title: 'Carrito',
+                })}
             />
+
+            <CartStack.Screen 
+            name="Location"
+            component={LocationScreen}
+            options={()=>({ 
+                title: 'Configuración de Envío',
+            })}
+            />
+
         </CartStack.Navigator>
     )
 }

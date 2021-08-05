@@ -29,6 +29,9 @@ const OrdersNavigator = () => {
             <OrdersStack.Screen 
             name="Orders"
             component={OrdersScreen}
+            options={()=>({ 
+                title: 'Ordenes',
+            })}
             />
         </OrdersStack.Navigator>
     )

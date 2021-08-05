@@ -1,20 +1,24 @@
 import React from 'react'
-import { StyleSheet, Text, View, Button, FlatList, Dimensions, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, FlatList, Dimensions } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteItem } from '../store/actions/cart.action'
 import CartItem from '../components/CartItem'
 import { confirmCart } from '../store/actions/cart.action'
 import Colors from '../constants/Colors'
+import ButtonStyled from '../components/ButtonStyled'
 
-const CartScreen = () => {
+const CartScreen = ({ navigation }) => {
     const dispatch = useDispatch();
 
     const items = useSelector(state => state.cart.items);
     const total = useSelector(state => state.cart.total);
     const user = useSelector(state => state.auth.user);
+    const address = useSelector(state => state.address.address);
 
     const handleDeleteItem = id => dispatch(deleteItem(id))
-    const handleConfirmCart = () => dispatch(confirmCart(items, user))
+    const handleConfirmCart = () => dispatch(confirmCart(items, user, address))
+
+    const handleConfigureEnv = () => navigation.push('Location')
 
     const renderItem = data => <CartItem item={data.item} onDelete={handleDeleteItem} />
 
@@ -35,16 +39,29 @@ const CartScreen = () => {
                     <Text style={styles.textTotal}>Total</Text>
                     <Text>${total}</Text>
                 </View>
-                <TouchableOpacity style={styles.btnConfirmCart} onPress={handleConfirmCart}>
-                    <Text style={styles.btnTextConfirmCart}>
-                        Confirmar
-                    </Text>
-                </TouchableOpacity>
+                {
+                    address ? null : 
+                    <ButtonStyled 
+                        onPress={handleConfigureEnv} 
+                        backgroundColor={Colors.primary}
+                        text="Configurar envío"
+                        textColor='white'
+                    />
+                }
+                {
+                    address &&
+                    <ButtonStyled 
+                        onPress={handleConfirmCart} 
+                        backgroundColor={Colors.primary}
+                        text="Confirmar"
+                        textColor='white'
+                    />
+                }
             </View>
         </View>) : (
-            <View style={styles.containerCartEmpty}>
-                <Text style={styles.textCartEmpty}>
-                    Tu carrito está vacio, agrega un producto y vuelve.
+            <View style={styles.containerEmpty}>
+                <Text style={styles.textEmpty}>
+                    ¡Tu carrito está vacío!
                 </Text>
             </View>
         )
@@ -67,15 +84,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    containerCartEmpty: {
+    containerEmpty: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         marginHorizontal: 30,
+        marginBottom: 20
     },  
-    textCartEmpty: {
+    textEmpty: {
         fontFamily: 'poppins-regular',
-        fontSize: 22
+        fontSize: 22,
+        textAlign: 'center'
     },
     total: {
         alignSelf: 'flex-start',
@@ -88,17 +107,6 @@ const styles = StyleSheet.create({
         fontFamily: 'poppins-regular',
         marginBottom: -10,
     },
-    btnConfirmCart:{
-        paddingVertical: 11,
-        paddingHorizontal: 30,
-        borderRadius: 30,
-        backgroundColor: '#8855FF'
-    },
-    btnTextConfirmCart: {
-        fontSize: 16,
-        fontFamily: 'poppins-medium',
-        color: '#ffffff'
-    }
 })
 
 export default CartScreen;

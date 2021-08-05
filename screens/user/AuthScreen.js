@@ -3,6 +3,8 @@ import { StyleSheet, Text, TouchableWithoutFeedback, View, KeyboardAvoidingView,
 import Input from '../../components/Input'
 import { useDispatch } from 'react-redux';
 import { signup, login, data } from '../../store/actions/auth.actions';
+import ButtonStyled from '../../components/ButtonStyled';
+import Colors from '../../constants/Colors';
 
 
 
@@ -131,12 +133,19 @@ const AuthScreen = () => {
                     />
                 </View>
                 <View style={styles.footer}>
-                  <TouchableOpacity style={styles.button} onPress={onLoginHandler}>
-                      <Text style={styles.textButton}>INICIAR SESIÓN</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.button} onPress={onSignupHandler}>
-                      <Text style={styles.textButton}>REGISTRARSE</Text>
-                  </TouchableOpacity>
+                  <ButtonStyled 
+                    onPress={onLoginHandler}
+                    style={{marginBottom: 10}}
+                    backgroundColor={Colors.primary}
+                    text="INICIAR SESIÓN"
+                    textColor="white"
+                  />
+                  <ButtonStyled 
+                    onPress={onSignupHandler} 
+                    backgroundColor="black"
+                    text="REGISTRARSE"
+                    textColor="white"
+                  />
                 </View>
             </View>
         </KeyboardAvoidingView>
@@ -165,19 +174,6 @@ const styles = StyleSheet.create({
       },
       footer: {
         marginTop: 24,
-      },
-      button:{
-        paddingVertical: 11,
-        paddingHorizontal: 30,
-        borderRadius: 30,
-        backgroundColor: '#8855FF',
-        marginBottom: 10,
-        alignItems: 'center',
-      },
-      textButton: {
-          fontSize: 18,
-          fontFamily: 'poppins-medium',
-          color: '#ffffff'
       },
 })
 

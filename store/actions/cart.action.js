@@ -15,7 +15,7 @@ export const deleteItem = itemID => ({
     itemID,
 })
 
-export const confirmCart = (payload, user) => {
+export const confirmCart = (payload, user, address) => {
     return async (dispatch) => {
         try{
             await fetch(`${URL_API}/ordenes.json`, {
@@ -26,6 +26,7 @@ export const confirmCart = (payload, user) => {
                 body: JSON.stringify({
                     date: Date.now(),
                     items: { ...payload },
+                    address,
                     user,
                 })
                 })

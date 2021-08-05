@@ -1,6 +1,8 @@
 import React from 'react'
 import { StyleSheet, Text, View, Dimensions, Image, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
+import ButtonStyled from './ButtonStyled';
+import Colors from '../constants/Colors';
 
 const DetailItem = ({ item, onAdd, onSave, itemSave, onRemoveSave }) => {
     return (
@@ -35,9 +37,13 @@ const DetailItem = ({ item, onAdd, onSave, itemSave, onRemoveSave }) => {
                         <Text style={styles.itemPriceTotalText}>Precio Total</Text>
                         <Text style={styles.itemPriceText}>${item.price}</Text>
                     </View>
-                    <TouchableOpacity style={styles.btnAddCart} onPress={onAdd} >
-                        <Text style={styles.btnTextAddCart}>Agregar</Text>
-                    </TouchableOpacity>
+                    <ButtonStyled 
+                        onPress={onAdd} 
+                        backgroundColor={Colors.primary}
+                        text="Agregar"
+                        styleText={{fontSize: 19}}
+                        textColor="white"
+                    />
                 </View>
             </View>
         </View>
@@ -106,17 +112,6 @@ const styles = StyleSheet.create({
         fontFamily: 'poppins-medium',
         fontSize: 20,
         color: '#333'
-    },
-    btnAddCart:{
-        paddingVertical: 11,
-        paddingHorizontal: 30,
-        borderRadius: 30,
-        backgroundColor: '#8855FF'
-    },
-    btnTextAddCart: {
-        fontSize: 19,
-        fontFamily: 'poppins-medium',
-        color: '#ffffff'
     },
     btnSave: {
         padding: 19,
