@@ -4,12 +4,16 @@ const themes = {
     dark: {
         backgroundColor: '#1A1D29',
         backgroundCard: '#20222E',
+        backgroundTab: '#20252e',
         color: '#fafafa',
+        colorSecundary: '#dadada',
     },
     light: {
         backgroundColor: '#eff0f3',
         backgroundCard: '#fafafa',
+        backgroundTab: '#f9f9f9',
         color: '#222',
+        colorSecundary: '#333'
     },
 }
 

@@ -5,9 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import CartScreen from '../../screens/CartScreen';
 import LocationScreen from '../../screens/LocationScreen';
 
-
 const CartStack = createStackNavigator()
-
 
 const CartNavigator = () => {
     return (
@@ -40,7 +38,7 @@ const CartNavigator = () => {
             name="Location"
             component={LocationScreen}
             options={()=>({ 
-                title: 'Configuración de Envío',
+                title: 'Configuración de envío',
             })}
             />
 

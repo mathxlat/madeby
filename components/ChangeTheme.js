@@ -1,14 +1,14 @@
 import React, { useContext } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { View, Switch } from 'react-native'
 import { ThemeContext } from '../theme/theme-context'
 
 const ChangeTheme = () => {
     const { dark, toggle } = useContext(ThemeContext);
     return (
-    <View style={styles.containerSwitch}>
+    <View>
         <Switch 
             trackColor={{ false: '#767577', true: '#ccc' }}
-            thumbColor={ dark ? '#fff' : '#f4f3f4' }
+            thumbColor={ dark ? '#fff' : '#20222E' }
             onChange={toggle}
             value={dark}
         />
@@ -17,10 +17,5 @@ const ChangeTheme = () => {
 }
 
 
-const styles = StyleSheet.create({
-    containerSwitch: {
-        marginBottom: 50,
-    },
-})
 
 export default ChangeTheme;

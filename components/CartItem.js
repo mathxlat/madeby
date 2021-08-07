@@ -1,26 +1,28 @@
-import React from 'react'
-import { StyleSheet, Text, View, Button, Dimensions, Image, TouchableOpacity } from 'react-native'
+import React, { useContext } from 'react'
+import { StyleSheet, Text, View, Dimensions, Image, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
+import { ThemeContext } from './../theme/theme-context';
 
-const CartItem = ({item, onDelete}) => {
+const CartItem = ({ item, onDelete }) => {
+    const { theme } = useContext(ThemeContext);
     return (
-        <View style={styles.containerCartItem}>
+        <View style={[styles.containerCartItem, {backgroundColor: theme.backgroundCard}]}>
             <View>
                 <Image style={styles.image} source={{ uri: item.image }}/>
             </View>
             <View>
                 <View>
-                    <Text style={styles.textName}>
+                    <Text style={[styles.textName, {color: theme.color}]}>
                         {item.name}
                     </Text>
                 </View>
                 <View>
-                    <Text>
+                    <Text style={[styles.textQuantity, {color: theme.color}]}>
                         Cantidad: {item.quantity}
                     </Text>
                 </View>
                 <View>
-                    <Text>
+                    <Text style={[styles.textPrice, {color: theme.color}]}>
                         ${item.price}
                     </Text>
                 </View>
@@ -54,6 +56,12 @@ const styles = StyleSheet.create({
     textName:{
         fontFamily: 'poppins-medium',
         fontSize: 16
+    },
+    textQuantity: {
+        fontFamily: 'poppins-regular'
+    },
+    textPrice: {
+        fontFamily: 'poppins-regular'
     }
 })
 

@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { StyleSheet, Text, View, Dimensions, Image, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
 import ButtonStyled from './ButtonStyled';
 import Colors from '../constants/Colors';
+import { ThemeContext } from '../theme/theme-context';
+
+
 
 const DetailItem = ({ item, onAdd, onSave, itemSave, onRemoveSave }) => {
+    const { theme } = useContext(ThemeContext);
     return (
         <View style={styles.itemContainer}>
             <View style={styles.itemContainerAll}>
@@ -14,28 +18,28 @@ const DetailItem = ({ item, onAdd, onSave, itemSave, onRemoveSave }) => {
 
                 <View style={styles.itemContainerNPS}>
                 <View style={styles.itemContainerNameProducer}>
-                    <Text style={styles.itemNameText}>{item.name}</Text>
-                    <Text style={styles.itemProducerText}>{item.createdby}</Text>
+                    <Text style={[styles.itemNameText, {color: theme.color}]}>{item.name}</Text>
+                    <Text style={[styles.itemProducerText, {color: theme.color}]}>{item.createdby}</Text>
                 </View>
                 {
                     !itemSave 
                     ?
                     <TouchableOpacity style={styles.btnSave} onPress={onSave}>
-                        <Ionicons name="bookmark-outline" size={28} color="black" />
+                        <Ionicons name="bookmark-outline" size={28} color={theme.color} />
                     </TouchableOpacity>
                     :
                     <TouchableOpacity style={styles.btnSave} onPress={onRemoveSave}>
-                        <Ionicons name="bookmark" size={28} color="black" />
+                        <Ionicons name="bookmark" size={28} color={theme.color} />
                     </TouchableOpacity>
                 }
                 </View>
                 <View style={styles.itemContainerDetail}>
-                    <Text style={styles.itemDetailText}>{item.description}</Text>
+                    <Text style={[styles.itemDetailText, {color: theme.colorSecundary}]}>{item.description}</Text>
                 </View>
                 <View style={styles.itemContainerPrice}>
                     <View style={styles.itemPriceBuy}>
-                        <Text style={styles.itemPriceTotalText}>Precio Total</Text>
-                        <Text style={styles.itemPriceText}>${item.price}</Text>
+                        <Text style={[styles.itemPriceTotalText, {color: theme.colorSecundary}]}>Precio Total</Text>
+                        <Text style={[styles.itemPriceText, {color: theme.color}]}>${item.price}</Text>
                     </View>
                     <ButtonStyled 
                         onPress={onAdd} 

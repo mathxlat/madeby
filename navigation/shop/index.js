@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { CardStyleInterpolators, createStackNavigator, TransitionSpecs} from '@react-navigation/stack';
+import { CardStyleInterpolators, createStackNavigator, TransitionSpecs } from '@react-navigation/stack';
 
 import HomeScreen from '../../screens/HomeScreen';
 import CategoryScreen from '../../screens/CategoryScreen';
 import DetailScreen from '../../screens/DetailScreen';
 import SaveScreen from '../../screens/SaveScreen';
+import OptionsScreen from '../../screens/OptionsScreen';
 
 import { ThemeContext } from '../../theme/theme-context';
 
@@ -38,7 +39,7 @@ const ShopNavigator = () => {
                 },
                 headerTintColor: Platform.OS === 'android' ? theme.color : 'white' ,
                 headerTitleAlign: 'center',
-                ...customTrasition
+                ...customTrasition,
             }}>
 
                 <Stack.Screen 
@@ -70,6 +71,14 @@ const ShopNavigator = () => {
                     component={SaveScreen} 
                     options={{
                         title: 'Guardados'
+                    }}
+                />
+
+                <Stack.Screen 
+                    name="Options" 
+                    component={OptionsScreen} 
+                    options={{
+                        title: 'Opciones'
                     }}
                 />
                 

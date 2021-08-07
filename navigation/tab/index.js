@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Ionicons } from '@expo/vector-icons'
 import Colors from '../../constants/Colors'
+import { ThemeContext } from './../../theme/theme-context';
 
 import ShopNavigator from '../shop'
 import CartNavigator from '../cart'
@@ -11,6 +12,7 @@ import OrdersNavigator from '../orders'
 const TabStack = createBottomTabNavigator();
 
 const TabNavigator = () => {
+    const { theme } = useContext(ThemeContext);
     return (
         <TabStack.Navigator
             initialRouteName="Shop"
@@ -19,6 +21,7 @@ const TabNavigator = () => {
                 style: {
                     ...styles.tabBar,
                     ...styles.shadow,
+                    ...{ backgroundColor: theme.backgroundTab, borderTopColor: 'transparent' }
                 }
             }}
         >

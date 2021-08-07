@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { StyleSheet, Text, View, FlatList, Dimensions } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteItem } from '../store/actions/cart.action'
@@ -6,8 +6,10 @@ import CartItem from '../components/CartItem'
 import { confirmCart } from '../store/actions/cart.action'
 import Colors from '../constants/Colors'
 import ButtonStyled from '../components/ButtonStyled'
+import { ThemeContext } from './../theme/theme-context';
 
 const CartScreen = ({ navigation }) => {
+    const { theme } = useContext(ThemeContext);
     const dispatch = useDispatch();
 
     const items = useSelector(state => state.cart.items);
@@ -36,14 +38,14 @@ const CartScreen = ({ navigation }) => {
             </View>
             <View style={styles.containerTotalConfirm}>
                 <View style={styles.total}>
-                    <Text style={styles.textTotal}>Total</Text>
-                    <Text>${total}</Text>
+                    <Text style={[styles.textTotal, {color: theme.color}]}>Total</Text>
+                    <Text style={[styles.textPrice, {color: theme.color}]}>${total}</Text>
                 </View>
                 {
                     address ? null : 
                     <ButtonStyled 
                         onPress={handleConfigureEnv} 
-                        backgroundColor={Colors.primary}
+                        backgroundColor='black'
                         text="Configurar envío"
                         textColor='white'
                     />
@@ -60,7 +62,7 @@ const CartScreen = ({ navigation }) => {
             </View>
         </View>) : (
             <View style={styles.containerEmpty}>
-                <Text style={styles.textEmpty}>
+                <Text style={[styles.textEmpty, {color: theme.color}]}>
                     ¡Tu carrito está vacío!
                 </Text>
             </View>
@@ -104,6 +106,11 @@ const styles = StyleSheet.create({
     },
     textTotal: {
         fontSize: 30,
+        fontFamily: 'poppins-regular',
+        marginBottom: -10,
+    },
+    textPrice: {
+        fontSize: 20,
         fontFamily: 'poppins-regular',
         marginBottom: -10,
     },

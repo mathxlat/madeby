@@ -29,6 +29,19 @@ const HomeScreen = ({ navigation }) => {
             )
         })
     }, [navigation])
+    useLayoutEffect(()=>{
+        navigation.setOptions({
+            headerLeft: () => (
+                <HeaderButtons HeaderButtonComponent={HeaderButton} >
+                    <Item 
+                        title="Opciones"
+                        iconName="options-outline"
+                        onPress={() => navigation.push('Options')}
+                    />
+                </HeaderButtons>
+            )
+        })
+    }, [navigation])
 
     return (
             <View style={styles.containerCategories}>

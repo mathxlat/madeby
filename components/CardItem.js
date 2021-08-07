@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
 import Card from './Card'
+import { ThemeContext } from './../theme/theme-context';
 
 const CardItem = ({item, onSelected}) => {
+    const { theme } = useContext(ThemeContext);
     let createdby = item.createdby 
-    ? <Text style={styles.textItemCreatedBy}>{item.createdby}</Text> 
+    ? <Text style={[styles.textItemCreatedBy, {color:theme.color}]}>{item.createdby}</Text> 
     : null
     return (
         <Card onPress={() => onSelected(item)}>
@@ -12,10 +14,10 @@ const CardItem = ({item, onSelected}) => {
                 <Image style={styles.image} source={{uri: item.image}} />
                 <View style={styles.containerText}>
                     <View style={ item.createdby ? styles.containerTextNameCreated : null }>
-                        <Text style={styles.textItemName}>{item.name}</Text>
+                        <Text style={[styles.textItemName, {color: theme.color}]}>{item.name}</Text>
                         {createdby}
                     </View>
-                    <Text style={styles.textItemDescription}>{item.description}</Text>
+                    <Text style={[styles.textItemDescription, {color: theme.colorSecundary}]}>{item.description}</Text>
                 </View>
             </View>
         </Card>

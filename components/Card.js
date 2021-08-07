@@ -1,20 +1,18 @@
 import React, { useContext } from 'react';
-import { StyleSheet, Dimensions, TouchableHighlight} from 'react-native';
+import { StyleSheet, Dimensions, TouchableOpacity} from 'react-native';
 import { ThemeContext } from '../theme/theme-context';
 
 
 const Card = ({ children, style = {}, onPress }) => {
     const { theme } = useContext(ThemeContext);
     return (    
-        <TouchableHighlight
-                activeOpacity={0.7}
-                underlayColor="#dddddd"
+        <TouchableOpacity
                 onPress={onPress}
                 style={[{...styles.containerCard, ...style}, { backgroundColor: theme.backgroundCard }]} >
             <>
                 {children}
             </>
-        </TouchableHighlight>
+        </TouchableOpacity>
     )
 }
 

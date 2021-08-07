@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext} from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
+import { ThemeContext } from './../theme/theme-context';
 
 const formatDate = time => {
     const date = new Date(time);
@@ -13,18 +14,19 @@ const sumTotal = list => list
 
 
 const OrderItem = ({ item, onDelete }) => {
+    const { theme } = useContext(ThemeContext);
     return (
-        <View style={styles.order}>
+        <View style={[styles.order, {backgroundColor: theme.backgroundCard }]}>
             <View style={styles.data}>
                 <View style={styles.dateItems}>
-                    <Text>{formatDate(item.date)}</Text>
-                    <Text>${sumTotal(item.items)}</Text>
+                    <Text style={[styles.text, {color: theme.color}]}>{formatDate(item.date)}</Text>
+                    <Text style={[styles.text, {color: theme.color}]}>${sumTotal(item.items)}</Text>
                 </View>
-                <Text>{item.address}</Text>
+                <Text style={[styles.text, {color: theme.color}]}>{item.address}</Text>
             </View>
             <View style={styles.actions}>
                 <TouchableOpacity onPress={() => onDelete(item.id)} style={styles.button}>
-                    <Ionicons size={16} color="red" name="md-trash" />
+                    <Ionicons size={24} color="red" name="md-trash" />
                 </TouchableOpacity>
             </View>
         </View>
@@ -36,27 +38,22 @@ const styles = StyleSheet.create({
     order: {
         flexDirection: 'row',
         width: '100%',
-        justifyContent: 'space-between',
-        height: 80,
-        paddingBottom: 10,
-        borderBottomColor: '#ccc',
-        borderBottomWidth: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 200,
+        backgroundColor: '#fff',
+        paddingHorizontal: 20,
+        marginBottom: 10
     },
     data: {
         flexDirection: 'column',
-        width: '80%',
-        justifyContent: 'space-between',
+        width: '85%',
+        justifyContent: 'space-evenly',
         alignContent: 'space-between',
-        height: 70,
+        height: 200,
     },
     dateItems: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: 60,
-        justifyContent: 'space-between',
-        width: '50%',
+        width: '100%'
     },
     actions: {
         flex: 1,
@@ -72,6 +69,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 3,
     },
+    text: {
+        fontFamily: 'poppins-regular'
+    }
 })
 
 export default OrderItem;
