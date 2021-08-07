@@ -26,7 +26,8 @@ const CategoryScreen = ({ navigation }) => {
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
                 contentContainerStyle={{
-                    paddingVertical: 10
+                    paddingVertical: 10,
+                    paddingBottom: 100
                 }}
             />
         </View>

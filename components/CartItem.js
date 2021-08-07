@@ -55,7 +55,8 @@ const styles = StyleSheet.create({
     },
     textName:{
         fontFamily: 'poppins-medium',
-        fontSize: 16
+        fontSize: 16,
+        width: 150
     },
     textQuantity: {
         fontFamily: 'poppins-regular'
