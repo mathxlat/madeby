@@ -18,12 +18,25 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.madeby.madeby",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.madeby.madeby",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#8855FF"
+      },
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "WRITE_EXTERNAL_STORAGE"
+      ],
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyB20zm8DV33eYs9CHlhmCWM4mIdkMLSMFk"
+        }
       }
     },
     "web": {
