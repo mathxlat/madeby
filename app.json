@@ -2,7 +2,7 @@
   "expo": {
     "name": "madeby",
     "slug": "madeby",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "platforms": ["ios", "android"],
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -19,7 +19,7 @@
     ],
     "ios": {
       "bundleIdentifier": "com.madeby.madeby",
-      "buildNumber": "1.0.0",
+      "buildNumber": "1.0.1",
       "supportsTablet": true
     },
     "android": {
@@ -35,7 +35,7 @@
       ],
       "config": {
         "googleMaps": {
-          "apiKey": "AIzaSyB20zm8DV33eYs9CHlhmCWM4mIdkMLSMFk"
+          "apiKey": ""
         }
       }
     },

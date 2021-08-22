@@ -4,6 +4,10 @@ Es una aplicación de *e-commerce* simple de componentes de tecnología, realiza
 ## Instalación ✨
 Correr un npm install para instalar todas las dependencias, con npm start se inicia el proyecto.
 
+## Vista previa de la App 🎬
+
+![Preview madeby](app-madeby.gif)
+
 ## Configuración 👨‍💻
 Para que puedas usar todas las funcionalidades es necesario que hagas un .env con las variables de entorno, dejo un ejemplo en example.env para que sea mucho más sencillo.
 
